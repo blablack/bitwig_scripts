@@ -100,7 +100,15 @@ public class Sfz2Multisample {
 
                 xml+="<sample file=\""+parts[ parts.length-1].trim()+"\" gain=\"0.000\" sample-start=\"0.000\" sample-stop=\""+end+"\" tune=\"0.0\">\n";
                 xml+="<key high=\""+attributes.get("hikey")+"\" low=\""+attributes.get("lokey")+"\" root=\""+attributes.get("pitch_keycenter")+"\" track=\"true\"/>\n";
-                xml+="<velocity/>\n"; 
+		
+                String p_lowVel = "";
+                if(attributes.get("lovel")!=null)
+                    p_lowVel = "low=\"" + attributes.get("lovel") + "\"";
+                String p_hiVel = "";
+                if(attributes.get("hivel")!=null)
+                    p_hiVel = "high=\"" + attributes.get("hivel") + "\"";
+                xml+="<velocity " + p_lowVel + " " + p_hiVel + "/>\n";
+
                 xml+="<loop/>\n";
                 xml+="</sample>\n";
             }
